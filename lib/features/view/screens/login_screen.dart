@@ -4,8 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:voco/core/constants/voco_assets.dart';
 import 'package:voco/core/constants/voco_dimensions.dart';
+import 'package:voco/core/constants/voco_strings.dart';
 import 'package:voco/core/router/voco_routes.dart';
 import 'package:voco/core/utils/exceptions/server_exception.dart';
+import 'package:voco/core/utils/validators.dart';
 import 'package:voco/features/controller/auth_controller.dart';
 import 'package:voco/features/view/widgets/voco_button.dart';
 
@@ -19,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -43,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: LoginScreenBody(
           emailController: _emailController,
           passwordController: _passwordController,
+          formKey: _formKey,
         ),
       ),
     );
@@ -54,10 +58,12 @@ class LoginScreenBody extends ConsumerWidget {
     super.key,
     required this.emailController,
     required this.passwordController,
+    required this.formKey,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -80,6 +86,7 @@ class LoginScreenBody extends ConsumerWidget {
       orElse: () => InitialBody(
         emailController: emailController,
         passwordController: passwordController,
+        formKey: formKey,
       ),
       loading: () => Center(
         child: Lottie.asset(
@@ -97,10 +104,12 @@ class InitialBody extends StatelessWidget {
     super.key,
     required this.emailController,
     required this.passwordController,
+    required this.formKey,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -114,11 +123,13 @@ class InitialBody extends StatelessWidget {
         TextFieldSection(
           emailController: emailController,
           passwordController: passwordController,
+          formKey: formKey,
         ),
         const Spacer(),
         ButtonSection(
           emailController: emailController,
           passwordController: passwordController,
+          formKey: formKey,
         ),
         const Spacer(flex: 5),
       ],
@@ -134,7 +145,7 @@ class HeaderSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'VOCO',
+      VocoStrings.appName,
       style: Theme.of(context).textTheme.displayLarge?.copyWith(
             fontWeight: FontWeight.bold,
             color: Theme.of(context).primaryColor,
@@ -148,31 +159,38 @@ class TextFieldSection extends StatelessWidget {
     super.key,
     required this.emailController,
     required this.passwordController,
+    required this.formKey,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          controller: emailController,
-          keyboardType: TextInputType.emailAddress,
-          decoration: const InputDecoration(
-            hintText: 'Email',
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            controller: emailController,
+            validator: (value) => Validators.emailValidator(value),
+            keyboardType: TextInputType.emailAddress,
+            decoration: const InputDecoration(
+              hintText: VocoStrings.email,
+            ),
           ),
-        ),
-        const SizedBox(height: VocoDimensions.smallGap),
-        TextField(
-          controller: passwordController,
-          keyboardType: TextInputType.visiblePassword,
-          decoration: const InputDecoration(
-            hintText: 'Şifre',
+          const SizedBox(height: VocoDimensions.smallGap),
+          TextFormField(
+            controller: passwordController,
+            validator: (value) => Validators.cannotBlankValidator(value),
+            keyboardType: TextInputType.visiblePassword,
+            decoration: const InputDecoration(
+              hintText: VocoStrings.password,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -182,10 +200,12 @@ class ButtonSection extends StatelessWidget {
     super.key,
     required this.emailController,
     required this.passwordController,
+    required this.formKey,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -196,10 +216,11 @@ class ButtonSection extends StatelessWidget {
             VocoButton(
               text: 'Giriş Yap',
               onPressed: () async {
-                await ref.read(authControllerProvider.notifier).login(
-                      emailController.text,
-                      passwordController.text,
-                    );
+                if (formKey.currentState!.validate()) {
+                  final email = emailController.text;
+                  final password = passwordController.text;
+                  await ref.read(authControllerProvider.notifier).login(email, password);
+                }
               },
             ),
             // TODO:  One day we will register users but not today.

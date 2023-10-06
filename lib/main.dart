@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:voco/core/constants/voco_strings.dart';
 import 'package:voco/core/constants/voco_theme.dart';
 import 'package:voco/core/router/voco_router.dart';
 import 'package:voco/features/repository/locale/locale_auth_repository.dart';

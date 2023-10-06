@@ -30,6 +30,15 @@ ThemeData vocoTheme = ThemeData(
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: VocoDimensions.circularRadius,
+      borderSide: BorderSide(
+        color: Colors.red,
+      ),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: VocoDimensions.circularRadius,
+      borderSide: BorderSide(
+        color: Colors.red,
+      ),
     ),
     disabledBorder: OutlineInputBorder(
       borderRadius: VocoDimensions.circularRadius,

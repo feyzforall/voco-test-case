@@ -1,16 +1,11 @@
 # voco
 
-"A new Flutter project."
+Açıkçası süslü bir readme yazmayı hiçbir zaman beceremedim. İstenen ne varsa yaptığımı düşünüyorum. Kullandığım kütüphaneleri anlatabilirim.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+google_fonts: Adı üstünde fontlar.
+go_router: Bir o yana bir bu yana git.
+lottie: Ufak tefek animasyonlar. 
+riverpod: State management. 
+dio(HOLY DIVER :D): Httq isteklerini atarken çok işe yarıyor. Severek kullandığım bir kütüphane. 
+dartz: Fonksiyonel programlama yapmak için kullanılıyor. Fonksiyon dönüş tipi olarak birden fazla değer dönmemizi sağlıyor. 
+shared_preferences: Cache

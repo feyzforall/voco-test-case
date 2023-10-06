@@ -1,9 +1,9 @@
-class Token {
+class TokenModel {
   String? token;
 
-  Token({this.token});
+  TokenModel({this.token});
 
-  Token.fromJson(Map<String, dynamic> json) {
+  TokenModel.fromJson(Map<String, dynamic> json) {
     token = json['token'];
   }
 

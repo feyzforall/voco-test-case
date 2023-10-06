@@ -1,6 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:voco/core/constants/endpoints.dart';
 import 'package:voco/core/utils/exceptions/server_exception.dart';
+import 'package:voco/features/model/error_model.dart';
+
+final dioProvider = Provider<Dio>((ref) => Dio());
+
+final networkManagerProvider = Provider<NetworkManager>(
+  (ref) => NetworkManager(
+    ref.read(dioProvider),
+  ),
+);
 
 class NetworkManager {
   final Dio dio;
@@ -36,15 +46,27 @@ class NetworkManager {
           headers: headers,
         ),
       );
-      return response.data;
+      return response;
     } on DioException catch (err) {
       throw _throwException(err);
     }
   }
 
-  DioException _throwException(DioException error) {
+  ServerException _throwException(DioException error) {
+    const String customErrorMessage = 'We encountered an unexpected error. Please try again later.';
+    String errorMessage = '';
+
+    // When the service does not work, the error is returned as html output.
+    // This control is used for this reason.
+    if (error.response!.data is Map) {
+      ErrorModel? errorModel = ErrorModel.fromJson(error.response?.data);
+      errorMessage = errorModel.error ?? customErrorMessage;
+    } else {
+      errorMessage = customErrorMessage;
+    }
+
     throw ServerException(
-      message: error.message.toString(),
+      message: errorMessage,
       statusCode: error.response?.statusCode,
     );
   }

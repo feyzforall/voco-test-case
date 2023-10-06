@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:voco/core/constants/voco_assets.dart';
 import 'package:voco/core/constants/voco_dimensions.dart';
+import 'package:voco/core/router/voco_routes.dart';
 import 'package:voco/core/utils/exceptions/server_exception.dart';
 import 'package:voco/features/controller/auth_controller.dart';
 import 'package:voco/features/view/widgets/voco_button.dart';
@@ -61,21 +63,21 @@ class LoginScreenBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(authControllerProvider);
     ref.listen(authControllerProvider, (previous, next) {
+      // If we get an error we show snackbar
       if (next is AsyncError) {
         final ServerException serverException = next.error as ServerException;
         var snackBar = SnackBar(
           content: Text(serverException.message.toString()),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        // If the login is successful, we go to the homepage
+      } else if (next is AsyncData) {
+        context.pushReplacementNamed(VocoRoutes.home);
       }
     });
 
-    return state.when(
-      data: (_) => InitialBody(
-        emailController: emailController,
-        passwordController: passwordController,
-      ),
-      error: (_, __) => InitialBody(
+    return state.maybeWhen(
+      orElse: () => InitialBody(
         emailController: emailController,
         passwordController: passwordController,
       ),

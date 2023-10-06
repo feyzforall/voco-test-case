@@ -5,14 +5,14 @@ import 'package:voco/core/utils/exceptions/server_exception.dart';
 import 'package:voco/core/utils/network_manager.dart';
 import 'package:voco/features/model/token_model.dart';
 
-final authRepositoryProvider = Provider<AuthRepository>(
-  (ref) => AuthRepository(ref.read(networkManagerProvider)),
+final remoteAuthRepositoryProvider = Provider<RemoteAuthRepository>(
+  (ref) => RemoteAuthRepository(ref.read(networkManagerProvider)),
 );
 
-class AuthRepository {
+class RemoteAuthRepository {
   final NetworkManager networkManager;
 
-  AuthRepository(this.networkManager);
+  RemoteAuthRepository(this.networkManager);
 
   Future<Either<ServerException, TokenModel>> login(String email, String password) async {
     try {

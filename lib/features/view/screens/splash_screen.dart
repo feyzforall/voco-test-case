@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:voco/core/constants/voco_assets.dart';
 import 'package:voco/core/router/voco_routes.dart';
+import 'package:voco/features/repository/locale/locale_auth_repository.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +19,13 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Timer(
       const Duration(seconds: 3),
-      () => context.pushReplacementNamed(VocoRoutes.login),
+      () {
+        if (LocalAuthRepository.isLoggedIn) {
+          context.pushReplacementNamed(VocoRoutes.home);
+        } else {
+          context.pushReplacementNamed(VocoRoutes.login);
+        }
+      },
     );
     super.initState();
   }

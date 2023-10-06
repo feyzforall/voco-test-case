@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:voco/core/constants/voco_colors.dart';
-import 'package:voco/core/constants/voco_dimensions.dart';
+import 'voco_colors.dart';
+import 'voco_dimensions.dart';
 
 ThemeData vocoTheme = ThemeData(
   scaffoldBackgroundColor: VocoColors.linkWater,

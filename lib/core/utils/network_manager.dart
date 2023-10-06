@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:riverpod/riverpod.dart';
-import 'package:voco/core/constants/endpoints.dart';
-import 'package:voco/core/utils/exceptions/server_exception.dart';
-import 'package:voco/features/model/error_model.dart';
+import '../constants/endpoints.dart';
+import 'exceptions/server_exception.dart';
+import '../../features/model/error_model.dart';
 
 final dioProvider = Provider<Dio>((ref) => Dio());
 

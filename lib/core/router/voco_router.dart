@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:voco/core/router/voco_routes.dart';
-import 'package:voco/features/view/screens/home_screen.dart';
-import 'package:voco/features/view/screens/login_screen.dart';
-import 'package:voco/features/view/screens/splash_screen.dart';
+import 'voco_routes.dart';
+import '../../features/view/screens/home_screen.dart';
+import '../../features/view/screens/login_screen.dart';
+import '../../features/view/screens/splash_screen.dart';
 
 final vocoRouter = GoRouter(
   routes: [

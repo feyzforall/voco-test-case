@@ -1,4 +1,4 @@
-import 'package:voco/core/constants/voco_strings.dart';
+import '../constants/voco_strings.dart';
 
 class Validators {
   Validators._();

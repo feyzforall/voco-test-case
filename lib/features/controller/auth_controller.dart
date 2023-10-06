@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:voco/core/utils/exceptions/server_exception.dart';
-import 'package:voco/features/repository/locale/locale_auth_repository.dart';
-import 'package:voco/features/repository/remote/remote_auth_repository.dart';
+import '../../core/utils/exceptions/server_exception.dart';
+import '../repository/locale/locale_auth_repository.dart';
+import '../repository/remote/remote_auth_repository.dart';
 
 final authControllerProvider = StateNotifierProvider<AuthController, AsyncValue>(
   (ref) {

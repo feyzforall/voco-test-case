@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
-import 'package:voco/core/constants/voco_assets.dart';
-import 'package:voco/core/router/voco_routes.dart';
-import 'package:voco/features/repository/locale/locale_auth_repository.dart';
+
+import '../../../core/constants/voco_assets.dart';
+import '../../../core/router/voco_routes.dart';
+import '../../repository/locale/locale_auth_repository.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

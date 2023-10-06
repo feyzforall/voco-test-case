@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:riverpod/riverpod.dart';
-import 'package:voco/core/constants/endpoints.dart';
-import 'package:voco/core/utils/exceptions/server_exception.dart';
-import 'package:voco/core/utils/network_manager.dart';
-import 'package:voco/features/model/token_model.dart';
+import '../../../core/constants/endpoints.dart';
+import '../../../core/utils/exceptions/server_exception.dart';
+import '../../../core/utils/network_manager.dart';
+import '../../model/token_model.dart';
 
 final remoteAuthRepositoryProvider = Provider<RemoteAuthRepository>(
   (ref) => RemoteAuthRepository(ref.read(networkManagerProvider)),

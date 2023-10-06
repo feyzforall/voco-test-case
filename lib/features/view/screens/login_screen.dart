@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
-import 'package:voco/core/constants/voco_assets.dart';
-import 'package:voco/core/constants/voco_dimensions.dart';
-import 'package:voco/core/constants/voco_strings.dart';
-import 'package:voco/core/router/voco_routes.dart';
-import 'package:voco/core/utils/exceptions/server_exception.dart';
-import 'package:voco/core/utils/validators.dart';
-import 'package:voco/features/controller/auth_controller.dart';
-import 'package:voco/features/view/widgets/voco_button.dart';
+import '../../../core/constants/voco_assets.dart';
+import '../../../core/constants/voco_dimensions.dart';
+import '../../../core/constants/voco_strings.dart';
+import '../../../core/router/voco_routes.dart';
+import '../../../core/utils/exceptions/server_exception.dart';
+import '../../../core/utils/validators.dart';
+import '../../controller/auth_controller.dart';
+import '../widgets/voco_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

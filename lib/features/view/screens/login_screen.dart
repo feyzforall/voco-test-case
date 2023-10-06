@@ -178,6 +178,7 @@ class TextFieldSection extends StatelessWidget {
           TextFormField(
             controller: passwordController,
             validator: (value) => Validators.cannotBlankValidator(value),
+            obscureText: true,
             keyboardType: TextInputType.visiblePassword,
             decoration: const InputDecoration(
               hintText: VocoStrings.password,

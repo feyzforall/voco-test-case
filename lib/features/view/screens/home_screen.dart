@@ -43,6 +43,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   );
                 },
               ),
+              // TODO : Fancy error widget
               error: (err, __) => Center(
                 child: Text(err.toString()),
               ),

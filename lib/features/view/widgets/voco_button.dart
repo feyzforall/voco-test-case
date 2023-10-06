@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voco/core/voco_colors.dart';
-import 'package:voco/core/voco_dimensions.dart';
+import 'package:voco/core/constants/voco_colors.dart';
+import 'package:voco/core/constants/voco_dimensions.dart';
 
 /// This is the button we love. This is the button we use LITERALLY everywhere.
 class VocoButton extends StatelessWidget {

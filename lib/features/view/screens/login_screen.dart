@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:voco/core/constants/voco_dimensions.dart';
 import 'package:voco/core/router/voco_routes.dart';
-import 'package:voco/core/voco_dimensions.dart';
 import 'package:voco/features/view/widgets/voco_button.dart';
 
 class LoginScreen extends StatelessWidget {

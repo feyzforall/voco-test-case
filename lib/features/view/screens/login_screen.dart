@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lottie/lottie.dart';
-import '../../../core/constants/voco_assets.dart';
+
 import '../../../core/constants/voco_dimensions.dart';
 import '../../../core/constants/voco_strings.dart';
 import '../../../core/router/voco_routes.dart';
 import '../../../core/utils/exceptions/server_exception.dart';
 import '../../../core/utils/validators.dart';
 import '../../controller/auth_controller.dart';
+import '../widgets/loading_animation.dart';
 import '../widgets/voco_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -88,13 +88,7 @@ class LoginScreenBody extends ConsumerWidget {
         passwordController: passwordController,
         formKey: formKey,
       ),
-      loading: () => Center(
-        child: Lottie.asset(
-          VocoAssets.animation,
-          width: 96,
-          height: 96,
-        ),
-      ),
+      loading: () => const LoadingAnimation(),
     );
   }
 }

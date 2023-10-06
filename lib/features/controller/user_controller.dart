@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../model/user_model.dart';
 import '../repository/remote/remote_user_repository.dart';
 
-final userControllerProvider = StateNotifierProvider<UserController, AsyncValue>(
+final userControllerProvider = StateNotifierProvider<UserController, AsyncValue<List<User>?>>(
   (ref) => UserController(ref.read(remoteUserRepositoryProvider)),
 );
 

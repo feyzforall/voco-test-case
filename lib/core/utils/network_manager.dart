@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:riverpod/riverpod.dart';
+
+import '../../features/model/error_model.dart';
 import '../constants/endpoints.dart';
 import 'exceptions/server_exception.dart';
-import '../../features/model/error_model.dart';
 
 final dioProvider = Provider<Dio>((ref) => Dio());
 
@@ -27,7 +28,7 @@ class NetworkManager {
   Future<Response> get(String path) async {
     try {
       final Response<dynamic> response = await dio.get(path);
-      return response.data;
+      return response;
     } on DioException catch (err) {
       throw _throwException(err);
     }

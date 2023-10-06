@@ -4,11 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:voco/core/voco_colors.dart';
 import 'package:voco/core/voco_dimensions.dart';
 
-ThemeData appTheme = ThemeData(
+ThemeData vocoTheme = ThemeData(
   scaffoldBackgroundColor: VocoColors.linkWater,
   textTheme: GoogleFonts.poppinsTextTheme(),
+  primaryColor: VocoColors.congressBlue,
   textSelectionTheme: const TextSelectionThemeData(
-    cursorColor: VocoColors.codGray,
+    cursorColor: VocoColors.congressBlue,
   ),
   inputDecorationTheme: const InputDecorationTheme(
     hintStyle: TextStyle(fontSize: 14),
@@ -19,17 +20,26 @@ ThemeData appTheme = ThemeData(
     enabledBorder: OutlineInputBorder(
       borderRadius: VocoDimensions.circularRadius,
       borderSide: BorderSide(
-        color: VocoColors.dustyGray,
+        color: VocoColors.codGray,
       ),
     ),
-    focusedBorder: OutlineInputBorder(borderRadius: VocoDimensions.circularRadius),
-    errorBorder: OutlineInputBorder(borderRadius: VocoDimensions.circularRadius),
-    disabledBorder: OutlineInputBorder(borderRadius: VocoDimensions.circularRadius),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: VocoDimensions.circularRadius,
+      borderSide: BorderSide(
+        color: VocoColors.congressBlue,
+      ),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: VocoDimensions.circularRadius,
+    ),
+    disabledBorder: OutlineInputBorder(
+      borderRadius: VocoDimensions.circularRadius,
+    ),
   ),
   textButtonTheme: const TextButtonThemeData(
     style: ButtonStyle(
       foregroundColor: MaterialStatePropertyAll<Color>(
-        VocoColors.codGray,
+        VocoColors.congressBlue,
       ),
     ),
   ),

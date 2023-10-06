@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:voco/core/router/voco_router.dart';
+import 'package:voco/core/voco_theme.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,16 +9,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Voco App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      theme: vocoTheme,
+      routerConfig: vocoRouter,
     );
   }
 }
